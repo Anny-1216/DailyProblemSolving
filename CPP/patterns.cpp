@@ -109,6 +109,75 @@ void pattern10(int a){
     pattern8(a);
     pattern9(a);
 };
+
+void pattern11(int a){
+    pattern2(a);
+    pattern5(a-1);
+}
+
+void pattern12(int a){
+    for (int i=0;i<a;i++){
+        for (int j=0;j<=i;j++){
+            if (i%2==0){
+                if(j%2==0)cout<<1;
+                else cout<<0;
+            }
+            else{
+                if(j%2==0)cout<<0;
+                else cout<<1;
+            }
+        }
+        cout<<endl;
+    }
+}
+
+void pattern13(int a){
+for (int i=0;i<a;i++){
+    //space
+    for (int j=0;j<=i;j++){
+        cout<<j+1;
+    }
+    //star
+    for (int j=0;j<(2*a-2)-(2*i);j++){
+        cout<<' ';
+    }
+    //space
+    for (int j=i;j>=0;j--){
+        cout<<j+1;
+    }
+    cout<<endl;
+}
+};
+
+void pattern14(int a){
+    int k=1;
+for (int i=0;i<a;i++){
+    for(int j=0;j<=i;j++){
+        cout<<k++;
+    }
+    cout<<endl;
+}
+};
+
+void pattern15(int a){
+    
+for (int i=0;i<a;i++){
+    for(char j='A';j<='A'+i;j++){
+        cout<<j;
+    }
+    cout<<endl;
+}
+};
+
+void pattern16(int a){ 
+for (int i=a;i>0;i--){
+    for(char j='A';j<='A'+i-1;j++){
+        cout<<j;
+    }
+    cout<<endl;
+}
+};
+
 int main(){
     int a=0;
     cin>>a;
@@ -117,5 +186,8 @@ int main(){
     // pattern3(a);
     //pattern7(a);
     // pattern8(a);
-    pattern10(a);
+    //pattern10(a);
+    //respect part 2 loop space pattern13(a);
+    // respect part3 pattern15(a);
+    pattern16(a);
 }
