@@ -177,6 +177,69 @@ for (int i=a;i>0;i--){
     cout<<endl;
 }
 };
+void pattern17(int a){
+    
+for (int i=0;i<a;i++){
+    //space
+    for (int j=0;j<a-i-1;j++){
+        cout<<' ';
+    }
+    //star
+    char ch = 'A';
+    int breakpoint=(2*i+1)/2;
+    for (int j=0;j<i*2+1;j++){
+        cout<<ch;
+        if (j<=breakpoint){
+            
+            ch++;
+        }
+        else{
+            ch--;
+    }
+    }
+    cout<<endl;
+
+};
+}
+
+void pattern18(int a){
+    
+for (int i=0;i<a;i++){
+    for (char j='E'-i;j<='E';j++)
+    cout<<j<<" ";
+    cout<<endl;
+}
+};
+
+void pattern19(int a){
+for(int i=0;i<a;i++){
+    for(int j=5-i;j>0;j--){
+        cout<<'*';
+    }
+    for (int j=0;j<2*i;j++)cout<<' ';
+    for(int j=5-i;j>0;j--){
+        cout<<'*';
+    
+    }
+    cout<<endl;
+}
+
+pattern13(a);
+}
+void pattern20(int a){
+    for (int i=0;i<2*a-1;i++){
+        for(int j=0;j<2*a-1;j++){
+            int top=i;
+            int left=j;
+            int right=(2*a-2)-j;
+            int bottom=(2*a-2)-i;
+            cout<<a-min(min(top,bottom),min(left,right));
+           
+            }
+            cout<<endl;
+        }
+        
+    }
 
 int main(){
     int a=0;
@@ -189,5 +252,6 @@ int main(){
     //pattern10(a);
     //respect part 2 loop space pattern13(a);
     // respect part3 pattern15(a);
-    pattern16(a);
+    //pattern16(a);
+    pattern20(a);
 }
