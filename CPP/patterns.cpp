@@ -241,6 +241,22 @@ void pattern20(int a){
         
     }
 
+void pattern21(int n){
+    int count=0;
+    for(int i =0;i<n;i++){
+            if(i%2==0){
+                count=count+2;
+                for(int k=0;k<count;k++){cout<<'*';
+                }
+            }
+            else{
+                for(int j=0;j<count;j++){cout<<'*';}
+            }
+            cout<<endl;
+        }
+    }
+
+
 int main(){
     int a=0;
     cin>>a;
@@ -253,5 +269,5 @@ int main(){
     //respect part 2 loop space pattern13(a);
     // respect part3 pattern15(a);
     //pattern16(a);
-    pattern20(a);
+    pattern21(a);
 }
