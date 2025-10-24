@@ -116,14 +116,100 @@ void rotatearray(int arr[],int n,int k){
     reversearray(arr,0,n-1);
 }
 
+
 //7.Right Shift
+void rightshift(int arr[],int n,int k){
+    int p=n-k;
+    reversearray(arr,0,p-1);
+    reversearray(arr,p+1,n-1);
+    reversearray(arr,0,n-1);
+}//8. ZEROS at end brute-. TAKE ANOTHER ARRAY TEMP BETTER->OPTIMAL->
+void zero_at_end(int arr[],int n){
+    int i=0;
+    int j=n-1;
+    while(i<n){
+        if (arr[i]==0)
+        {
+            
+            while(j>=0){
+                if ((arr[i]!=arr[j])&& i<j)
+                {
+                   swap(arr[i],arr[j]);
+                   j--;
+                   break;
+                }
+                else{j--;}
+
+                
+            }
+            i++;
+        }
+        else{i++;}
+        
+    }
+}
+
+void moveZeroes(int nums[], int n) {
+    int zcount=0;
+    for(int i=0;i<n;i++){
+        if(nums[i]==0)zcount++;
+    }
+    for(int i=0;i<zcount;i++){
+        for(int j=0;j+1<n;j++){
+            int k=n;
+            if(nums[j]==0){
+                while(k!=0){
+                    swap(nums[j],nums[j+1]);
+                    k--;
+                }
+            }
+        }
+    }
+}
+
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+    int n=nums.size();
+    int j=-1;
+    for(int i=0;i<n;i++){
+        if(nums[i]==0){j=i;
+        break;}
+    }
+
+    if(j==-1)return;
+    else{
+        for(int i=j+1;i<n;i++){
+            if(nums[i]!=0){
+                swap(nums[i],nums[j]);
+                j++;
+            }
+        }
+    }
+
+        
+    }
+};
+
+//9.Linear Search
+int linearsearch(int arr[],int n,int key){
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i]==key)
+        {
+            return i;
+        }
+    }
+    return -1;
+    }
+//10.Union of 2 sets  Brute-> Use Sets data structure
 int main(void)
 {
 
-    int arr[] = {1,1,1,2,2,2,3};
+    int arr[] = {0,1};
 
-    rotatearray(arr, 7,3);
-    for (int i = 0; i < 7; i++)
+    moveZeroes(arr, 2);
+    for (int i = 0; i < 2; i++)
     {
         cout<<arr[i]<<" ";
     }
