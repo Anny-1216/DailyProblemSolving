@@ -25,12 +25,14 @@ int seclargestnum(int arr[], int n)
         if (n == 3)
         {
             if (arr[i] > max)
-        {
-            max2=max;
-            max = arr[i];
-        }
-        else if(arr[i]>max2){max2=arr[i];}
-           
+            {
+                max2 = max;
+                max = arr[i];
+            }
+            else if (arr[i] > max2)
+            {
+                max2 = arr[i];
+            }
         }
         else
         {
@@ -50,116 +52,140 @@ int seclargestnum(int arr[], int n)
     cout << max2;
     return max2;
 }
-//3.Check if array is sorted
-bool checksort(int arr[],int n){
+// 3.Check if array is sorted
+bool checksort(int arr[], int n)
+{
     for (int i = 1; i < n; i++)
     {
-        if (arr[i]>=arr[i-11])
+        if (arr[i] >= arr[i - 11])
         {
             return true;
         }
     }
-    
+
     return false;
-    
 }
 
-//4.Remove duplicates from a sorted array linear approach use of set, optimal two ptrs
-void removeduplicate(int arr[],int n){
-    int i=0;
-    int j=0;
-    int count=1;
-    while (j<n)
+// 4.Remove duplicates from a sorted array linear approach use of set, optimal two ptrs
+int removeduplicate(int arr[], int n)
+{
+    int i = 0;
+    int j = 0;
+    int count = 1;
+    while (j < n)
     {
-        if(arr[i]==arr[j]){
-    
-        
-        j++;
-        
+        if (arr[i] == arr[j])
+        {
+
+            j++;
+        }
+        else
+        {
+
+            arr[i + 1] = arr[j];
+            i++;
+
+            count++;
+        }
     }
-        else{
-            
-        arr[i+1]=arr[j];
-         i++;
-         
-        count++;}
-    }
-    cout<<count;
+    return count;
 }
-//5.Left rotate array by one
-void leftrotatearrayby1(int arr[],int n,int rotate){
-    int pos = n-rotate;
-    int temp=arr[0];
+// 5.Left rotate array by one
+void leftrotatearrayby1(int arr[], int n, int rotate)
+{
+    int pos = n - rotate;
+    int temp = arr[0];
     for (int i = 0; i < n; i++)
     {
-        if(i==pos){arr[pos]=temp;}
-        else{
-        arr[i]=arr[i+rotate];}
+        if (i == pos)
+        {
+            arr[pos] = temp;
+        }
+        else
+        {
+            arr[i] = arr[i + rotate];
+        }
     }
-    
 }
-//6.left rotate by k brute is taking an extra array, optimal is reverse,reverse,reverse!
+// 6.left rotate by k brute is taking an extra array, optimal is reverse,reverse,reverse!
 
-void reversearray(int arr[],int start ,int end){
-    while(start<=end){
-        int temp=arr[start];
-        arr[start]=arr[end];
-        arr[end]=temp;
+void reversearray(int arr[], int start, int end)
+{
+    while (start <= end)
+    {
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
         start++;
         end--;
     }
 }
-void rotatearray(int arr[],int n,int k){
-    if(k%n==0)return;
-    reversearray(arr,0,k-1);
-    reversearray(arr,k+1,n-1);
-    reversearray(arr,0,n-1);
+void rotatearray(int arr[], int n, int k)
+{
+    if (k % n == 0)
+        return;
+    reversearray(arr, 0, k - 1);
+    reversearray(arr, k + 1, n - 1);
+    reversearray(arr, 0, n - 1);
 }
 
-
-//7.Right Shift
-void rightshift(int arr[],int n,int k){
-    int p=n-k;
-    reversearray(arr,0,p-1);
-    reversearray(arr,p+1,n-1);
-    reversearray(arr,0,n-1);
-}//8. ZEROS at end brute-. TAKE ANOTHER ARRAY TEMP BETTER->OPTIMAL->
-void zero_at_end(int arr[],int n){
-    int i=0;
-    int j=n-1;
-    while(i<n){
-        if (arr[i]==0)
+// 7.Right Shift
+void rightshift(int arr[], int n, int k)
+{
+    int p = n - k;
+    reversearray(arr, 0, p - 1);
+    reversearray(arr, p + 1, n - 1);
+    reversearray(arr, 0, n - 1);
+} // 8. ZEROS at end brute-. TAKE ANOTHER ARRAY TEMP BETTER->OPTIMAL->
+void zero_at_end(int arr[], int n)
+{
+    int i = 0;
+    int j = n - 1;
+    while (i < n)
+    {
+        if (arr[i] == 0)
         {
-            
-            while(j>=0){
-                if ((arr[i]!=arr[j])&& i<j)
-                {
-                   swap(arr[i],arr[j]);
-                   j--;
-                   break;
-                }
-                else{j--;}
 
-                
+            while (j >= 0)
+            {
+                if ((arr[i] != arr[j]) && i < j)
+                {
+                    swap(arr[i], arr[j]);
+                    j--;
+                    break;
+                }
+                else
+                {
+                    j--;
+                }
             }
             i++;
         }
-        else{i++;}
-        
+        else
+        {
+            i++;
+        }
     }
 }
 
-void moveZeroes(int nums[], int n) {
-    int zcount=0;
-    for(int i=0;i<n;i++){
-        if(nums[i]==0)zcount++;
+void moveZeroes(int nums[], int n)
+{
+    int zcount = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (nums[i] == 0)
+            zcount++;
     }
-    for(int i=0;i<zcount;i++){
-        for(int j=0;j+1<n;j++){
-            int k=n;
-            if(nums[j]==0){
-                while(k!=0){
-                    swap(nums[j],nums[j+1]);
+    for (int i = 0; i < zcount; i++)
+    {
+        for (int j = 0; j + 1 < n; j++)
+        {
+            int k = n;
+            if (nums[j] == 0)
+            {
+                while (k != 0)
+                {
+                    swap(nums[j], nums[j + 1]);
                     k--;
                 }
             }
@@ -167,52 +193,154 @@ void moveZeroes(int nums[], int n) {
     }
 }
 
-class Solution {
+class Solution
+{
 public:
-    void moveZeroes(vector<int>& nums) {
-    int n=nums.size();
-    int j=-1;
-    for(int i=0;i<n;i++){
-        if(nums[i]==0){j=i;
-        break;}
-    }
+    void moveZeroes(vector<int> &nums)
+    {
+        int n = nums.size();
+        int j = -1;
+        for (int i = 0; i < n; i++)
+        {
+            if (nums[i] == 0)
+            {
+                j = i;
+                break;
+            }
+        }
 
-    if(j==-1)return;
-    else{
-        for(int i=j+1;i<n;i++){
-            if(nums[i]!=0){
-                swap(nums[i],nums[j]);
-                j++;
+        if (j == -1)
+            return;
+        else
+        {
+            for (int i = j + 1; i < n; i++)
+            {
+                if (nums[i] != 0)
+                {
+                    swap(nums[i], nums[j]);
+                    j++;
+                }
             }
         }
     }
-
-        
-    }
 };
 
-//9.Linear Search
-int linearsearch(int arr[],int n,int key){
+// 9.Linear Search
+int linearsearch(int arr[], int n, int key)
+{
     for (int i = 0; i < n; i++)
     {
-        if (arr[i]==key)
+        if (arr[i] == key)
         {
             return i;
         }
     }
     return -1;
+}
+// 10.Union of 2 sets  Brute-> Use Sets data structure
+
+void union_operation(int arr1[], int arr2[], int s1, int s2)
+{
+    int i, j;
+    i=j = 0;
+    int k = 0;
+    int temp[(s1 + s2)];
+    while (i < s1 && j < s2)
+    {
+        if (arr1[i] <= arr2[j])
+        {
+            temp[k] = arr1[i];
+            k++;
+            i++;
+        }
+        else
+        {
+            temp[k] = arr2[j];
+            k++;
+            j++;
+        }
     }
-//10.Union of 2 sets  Brute-> Use Sets data structure
+    while (i < s1)
+    {
+        temp[k] = arr1[i];
+        k++;
+        i++;
+    }
+    while (j < s2)
+    {
+        temp[k] = arr2[j];
+        k++;
+        j++;
+    }
+    int s = removeduplicate(temp, k);
+
+    for (int i = 0; i < s; i++)
+    {
+        cout << temp[i] << " ";
+    }
+}
+// 11. intersection a visited array approach and a new optimal approach as two of arrays are sorted!
+
+void intersection_operation_bf(int arr1[], int arr2[], int s1, int s2){
+int visited[s2]={false};
+int temp[max(s1,s2)];
+int i=0;
+int k=0;
+while(i<s1){int j=0;
+    while(j<s2){
+        if(arr1[i]==arr2[j]&&visited[j]==0){
+            temp[k]=arr1[i];
+            k++;
+            visited[j]=1;
+            break;
+        }
+        j++;
+    }
+    i++;}
+
+    for (int i = 0; i < k; i++)
+    {
+        cout<<temp[i];
+        cout<<endl;
+    }
+}
+
+void intersection_optimal(int arr1[], int arr2[], int s1, int s2){
+    int i=0;
+    int j=0;
+    int temp[max(s1,s2)];
+    int k=0;
+    while (i<s1)
+    {
+        if(arr1[i]>arr2[j]){
+            j++;
+        }
+        else if(arr1[i]==arr2[j]){
+            temp[k]=arr1[i];
+            k++;i++;j++;
+        }
+        i++;
+    }
+    for (int i = 0; i < k; i++)
+    {
+        cout<<temp[i];
+        cout<<endl;
+    }
+    
+    
+}
+
 int main(void)
 {
 
-    int arr[] = {0,1};
+    int arr1[] = {0, 1, 1, 1, 1, 1, 3};
+    int arr2[] = {1, 3, 5, 7};
 
-    moveZeroes(arr, 2);
-    for (int i = 0; i < 2; i++)
-    {
-        cout<<arr[i]<<" ";
-    }
-    
+    intersection_optimal(arr1, arr2, 7, 4);
+    // for (int i = 0; i < 2; i++)
+    // {
+    //     cout<<arr[i]<<" ";
+    // }
+
     return 0;
 }
