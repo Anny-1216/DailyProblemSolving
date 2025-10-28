@@ -327,16 +327,57 @@ void intersection_optimal(int arr1[], int arr2[], int s1, int s2){
         cout<<endl;
     }
     
+// 12.Find Missing Number
+}
+int missingNumber(int nums[],int n) {
     
+        int sum=(n*(n+1))/2;
+        int sum2=0;
+        for (int i=0;i<n;i++){
+            sum2=sum2+nums[i];
+        }
+        return sum-sum2;
+        
+    }
+int missingnumxor(int n,int arr[]){
+    int xor1=0;
+    int xor2=0;
+    for (int i = 0; i < n; i++)
+    {
+        xor1=arr[i]^xor1;
+        xor2=xor2^(i+1);
+    }
+    xor2=xor2^n;
+    
+    return xor1^xor2;
+}
+
+//13.Longest consecutive sequence of 1
+int lchain1(int arr[],int n){
+    int max=0;
+    int count=0;
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i]==1)
+        {
+            count++;
+            if(count>=max)max=count;
+        }
+        else{
+        count=0;}
+        
+    }
+    
+    return max;
 }
 
 int main(void)
 {
 
-    int arr1[] = {0, 1, 1, 1, 1, 1, 3};
+    int arr1[] = {0,1,1,1, 1, 1, 0,1,0,1,3};
     int arr2[] = {1, 3, 5, 7};
 
-    intersection_optimal(arr1, arr2, 7, 4);
+    cout<<lchain1(arr1,11);
     // for (int i = 0; i < 2; i++)
     // {
     //     cout<<arr[i]<<" ";
