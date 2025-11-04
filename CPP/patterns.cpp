@@ -255,7 +255,44 @@ void pattern21(int n){
             cout<<endl;
         }
     }
-
+void pattern22(int n){
+    int space=0;
+    int space2=n-2;
+    for(int i=1;i<=n;i++){
+        
+        if(i<=(n/2)){
+        for (int j = 0; j <(n-space)/2 ; j++)
+        {
+            cout<<"*";
+        }
+        for(int j=0;j<space;j++){
+            cout<<" ";
+        }
+        for (int j = 0; j <(n-space)/2 ; j++)
+        {
+            cout<<"*";
+        }
+        space=space+2;}
+        
+        else{
+        
+        for (int j = 0; j <(n-space2)/2 ; j++)
+        {
+            cout<<"*";
+        }
+        for(int j=0;j<space2;j++){
+            cout<<" ";
+        }
+        for (int j = 0; j <(n-space2)/2 ; j++)
+        {
+            cout<<"*";
+        }
+        space2=space2-2;
+        
+    }
+    cout<<endl;
+    }
+}
 
 int main(){
     int a=0;
@@ -269,5 +306,5 @@ int main(){
     //respect part 2 loop space pattern13(a);
     // respect part3 pattern15(a);
     //pattern16(a);
-    pattern21(a);
+    pattern22(a);
 }
